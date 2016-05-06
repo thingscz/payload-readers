@@ -64,9 +64,13 @@ if ($byte9array[7] == 0) {$temperature_sign = "+";} else {$temperature_sign = "-
 
 //
 $snr = $snr_sign . $byte2 . " dB";
-$battery_voltage =  $byte3 . $byte4 . " mV";
 $temperature = $temperature_sign . $byte5 . "," . $byte6 . " C";
 $humidity =  $byte7 . "," . $byte8 . " %";
+if ($power == "external") {
+	$battery_voltage = "-- mV";	
+} else {
+	$battery_voltage = $byte3 . $byte4 . " mV";
+};
 
 //
 $data = array('device' => $device, 'firmware' => $firmware, 'note' => $note, 'payload' => $payload, 'infobyte' => $byte1bits, 'infobyte2' => $byte9bits, 'adr' => $adr, 'snr' => $snr, 'dr' => $dr, 'power' => $power, 'battery_voltage' => $battery_voltage, 'temperature' => $temperature, 'humidity' => $humidity, 'short_circuit' => $short_circuit);
