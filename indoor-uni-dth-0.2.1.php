@@ -6,14 +6,18 @@
 $payload_example = "2408200315143C1E00";
 $device = "Solidus Tech - IndoorUNI DTH";
 $firmware = "fw 0.2.1";
-$note = "reference payload reader";
 
 //
 if ($_GET['payload'] == "") {
-	$payload = $payload_example;
-	$note = $note . " / payload example " . $payload_example; 	
+	$filename = basename(__FILE__, '.php');
+	echo '<meta http-equiv="refresh" content="0;url=' . $filename . '?payload=' . $payload_example . '">';
+	exit;
+} else if ($_GET['payload'] == $payload_example) {
+	$payload = $_GET['payload'];
+	$note = "reference payload reader / found example payload in URL";
 } else {
 	$payload = $_GET['payload'];
+	$note = "reference payload reader";
 };
 
 //
