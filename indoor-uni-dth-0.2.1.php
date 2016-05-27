@@ -24,7 +24,7 @@ if ($_GET['payload'] == "") {
 $payload_array = str_split($payload, 2);
 
 // 1 byte, info byte
-$byte1 = hexdec($payload_array['0']);
+$byte1 = $payload_array['0'];
 $byte1bits = base_convert($byte1, 16, 2);
 while (strlen($byte1bits) < 8) {$byte1bits = "0" . $byte1bits;};
 $byte1array = str_split($byte1bits, 1);
@@ -58,7 +58,7 @@ $byte8 = hexdec($payload_array['7']);
 if (strlen($byte8) == 1) {$byte8 = $byte8 . "0";}; // keep 0n
 
 // 9 byte, info byte 2
-$byte9 = hexdec($payload_array['8']);
+$byte9 = $payload_array['8'];
 $byte9bits = base_convert($byte9, 16, 2);
 while (strlen($byte9bits) < 8) {$byte9bits = "0" . $byte9bits;};
 $byte9array = str_split($byte9bits, 1);
